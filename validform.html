@@ -1,0 +1,171 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="validform_css.css"/>
+<style>
+span{
+color:red;
+background-color:#80af73;
+font-size:15px;
+}
+body{
+background-image:url("img/0vY8E.jpg");
+background-repeat:no-repeat;
+background-size:cover;
+}
+div{
+border:1px solid #00000070;
+width:30%;
+height:550px;
+margin-top:3%;
+margin-left:31%;
+padding-left:15%;
+background-color:#4e6e44bd;
+color:#fffff9;
+border-radius:2%;
+box-shadow:6px 8px 18px 18px #00000070;
+font-family: cursive;
+}
+.btn{
+width:20%;
+height:5%;
+color:white;
+box-shadow:2px 2px 5px 5px #00000070;
+border-radius:2%;
+font-family: serif;
+border:none;
+background-color:#4e6e44bd;
+}
+.btn:hover{
+width:19.8%;
+height:4.8%;
+color:white;
+box-shadow:1px 1px 3px 3px #00000070;
+border-radius:2%;
+font-family: serif;
+border:none;
+background-color:#4e6e44bd;
+}
+
+</style>
+<script>
+function checkvalid(){
+  var x = document.forms["myForm"]["Name"].value;
+  var y = document.forms["myForm"]["e-mail"].value;
+  var z = document.forms["myForm"]["state"].value;
+  var phno = document.forms["myForm"]["phone"].value;
+  var zip = document.forms["myForm"]["zipcode"].value;
+  var pwd = document.forms["myForm"]["passwd"].value;
+  
+  //name
+  var first=x.charAt(0);
+  var firstMatch=first.match(/^[A-Z]/);
+  if(firstMatch==null)
+  {
+    document.getElementById("namerror").innerHTML="* First Letter Must Be Capital";
+    return false;
+  }
+ else if (x=="" || x.indexOf(" ")==-1) 
+  {
+    document.getElementById("namerror").innerHTML="* Enter both First or Last Name";
+    return false;
+  }
+  else
+  {
+  document.getElementById("namerror").style.display="none";
+  }
+  
+  //e-mail 
+var emailPat =/^(\".*\"|[A-Za-z]\w*)@(\[\d{1,3}(\.\d{1,3}){3}]|[A-Za-z]\w*(\.[A-Za-z]\w*)+)$/ ;
+var matchArray1 = y.match(emailPat);
+if (y.value!="")
+{  
+  if (matchArray1 == null)
+  {
+        document.getElementById("mailerror").innerHTML="* Enter Correct E-mail Address";
+        return false;
+  }
+  else{
+   document.getElementById("mailerror").style.display="none";
+}
+
+}
+
+//state
+var statePat=/[A-Za-z]/;
+var statePatnum=/[0-9]/;
+var matchArray2=z.match(statePat);
+var matchArraynum=z.match(statePatnum);
+if(z.value!="")
+     {
+      if(matchArray2 == null || matchArraynum != null)
+            {
+             document.getElementById("stateerror").innerHTML="* Enter Correct State Name";
+			 return false;
+			}
+        else{
+             document.getElementById("stateerror").style.display="none";
+            }
+	 
+	 }
+	 
+
+	 //phone no.
+ if(phno.length<10 || phno.length>10 || isNaN(phno))
+    {
+	 document.getElementById("phoneerror").innerHTML="* Enter Correct Phone Number";
+	 return false;
+	}
+	else
+	{
+	 document.getElementById("phoneerror").style.display="none";
+	}
+	 
+
+	 //zip
+if(zip.value!="")
+     {
+      if(isNaN(zip) || zip.length<6 || zip.length>6)
+            {
+             document.getElementById("ziperror").innerHTML="* Enter Correct Pin Code";
+			 return false;
+			}
+		else
+		{
+		  document.getElementById("ziperror").style.display="none";
+		}	
+     }
+
+	 ///password
+	 var pwdPatcapital=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/ ;
+	 var matchArraycapital=pwd.match(pwdPatcapital);
+	 if(pwd.value!="")
+	    {  
+		  if(matchArraycapital == null || pwd.length<8)
+		     {
+			 document.getElementById("pwderror").innerHTML="* Choose Strong Password.";
+			 return false;
+			 }
+	      else
+		     {
+		      document.getElementById("pwderror").style.display="none";
+		      }
+		}
+		
+alert("Registered Successfully!");
+}
+</script>
+</head>
+<body>
+<form name="myForm" onsubmit="return checkvalid()" method="post" action="">
+<div>
+<h1>Sign Up !</h1>
+Name:<br><input class="inputbox" type="text" name="Name" placeholder="Enter Your Name" /><span id="namerror"></span><br><br>
+E-mail:<br><input class="inputbox" type="text" name="e-mail" placeholder="Enter Your E-mail" /><span id="mailerror"></span><br><br>
+State:<br><input class="inputbox" type="text" name="state" placeholder="Enter Your State Name" /><span id="stateerror"></span><br><br>
+Phone No. :<br> <input class="inputbox" type="text" name="phone" placeholder="Enter Your Phone No." /><span id="phoneerror"></span><br><br>
+Pin Code :<br> <input class="inputbox" type="text" name="zipcode" placeholder="Enter Your Pin" /><span id="ziperror"></span><br><br>
+Password :<br><input class="inputbox" type="password" name="passwd" placeholder="Choose Password" /><span id="pwderror"></span><br><br>
+<input class="btn" type="submit" value="Submit"/>
+</div>
+</body>
+</html>
