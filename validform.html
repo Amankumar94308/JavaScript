@@ -1,51 +1,62 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="validform_css.css"/>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
-span{
-color:red;
-background-color:#80af73;
-font-size:15px;
+span {
+    color: #ef0000;
+    background-color: #f1f1f1;
+    font-size: 15px;
+    padding: 2%;
 }
-body{
-background-image:url("img/0vY8E.jpg");
-background-repeat:no-repeat;
-background-size:cover;
+div {
+    /* border: 1px solid #00000070; */
+    width: 35%;
+    height: 600px;
+    margin-top: 3%;
+    margin-left: 26%;
+    padding-left: 15%;
+    background-color: #edededbd;
+    color: #000000;
+    border-style: none;
+    box-shadow:0px 2px 10px 10px #0000004f;
+    /* font-family: cursive; */
 }
-div{
-border:1px solid #00000070;
-width:30%;
-height:550px;
-margin-top:3%;
-margin-left:31%;
-padding-left:15%;
-background-color:#4e6e44bd;
-color:#fffff9;
-border-radius:2%;
-box-shadow:6px 8px 18px 18px #00000070;
-font-family: cursive;
+input {
+    /* box-shadow: 1px 1px 3px -3px #00000070; */
+    height: 4%;
+    width: 50%;
+    border-radius: 3px;
+    border:1px solid #00000061;
+    padding: 2%;
+    margin-top: 1%;
+	background: #fafafa;
 }
-.btn{
-width:20%;
-height:5%;
-color:white;
-box-shadow:2px 2px 5px 5px #00000070;
-border-radius:2%;
-font-family: serif;
-border:none;
-background-color:#4e6e44bd;
-}
-.btn:hover{
-width:19.8%;
-height:4.8%;
-color:white;
-box-shadow:1px 1px 3px 3px #00000070;
-border-radius:2%;
-font-family: serif;
-border:none;
-background-color:#4e6e44bd;
-}
+label{
 
+}
+.btn {
+    width: 20%;
+    color: white;
+    border-radius: 2%;
+    font-family: serif;
+    border: none;
+    background-color: #4CAF50;
+    padding: 5%;
+    margin-top: 0% !important;
+    padding-top: 2% !important;
+    font-weight: 700;
+    font-size: 14px;
+}
+.btn:hover {
+    width: 20%;
+    color: white;
+    box-shadow: 0px 0px 2px 2px #00000040;
+    background-color: #4caf50c2;
+}
+.fa{
+color: #4CAF50;
+}
 </style>
 <script>
 function checkvalid(){
@@ -55,6 +66,45 @@ function checkvalid(){
   var phno = document.forms["myForm"]["phone"].value;
   var zip = document.forms["myForm"]["zipcode"].value;
   var pwd = document.forms["myForm"]["passwd"].value;
+  if(x==""){
+  document.getElementById('nameinput').style.border  = "1px solid #ef0000";
+  }
+  else{
+    document.getElementById('nameinput').style.border  = "1px solid green";
+  }
+  
+  if(y==""){
+  document.getElementById('mailinput').style.border  = "1px solid #ef0000";
+  }
+    else{
+    document.getElementById('mailinput').style.border  = "1px solid green";
+  }
+    if(z==""){
+  document.getElementById('stateinput').style.border  = "1px solid #ef0000";
+  }
+    else{
+    document.getElementById('stateinput').style.border  = "1px solid green";
+  }
+    if(phno==""){
+  document.getElementById('phoneinput').style.border  = "1px solid #ef0000";
+  }
+    else{
+    document.getElementById('phoneinput').style.border  = "1px solid green";
+  }
+      if(zip==""){
+  document.getElementById('zipinput').style.border  = "1px solid #ef0000";
+  }
+    else{
+    document.getElementById('zipinput').style.border  = "1px solid green";
+  }
+      if(pwd==""){
+  document.getElementById('pwdinput').style.border  = "1px solid #ef0000";
+  }
+    else{
+    document.getElementById('pwdinput').style.border  = "1px solid green";
+  }
+  
+
   
   //name
   var first=x.charAt(0);
@@ -64,7 +114,7 @@ function checkvalid(){
     document.getElementById("namerror").innerHTML="* First Letter Must Be Capital";
     return false;
   }
- else if (x=="" || x.indexOf(" ")==-1) 
+  if (x.indexOf(" ")==-1 || x.indexOf(" ")>x.length) 
   {
     document.getElementById("namerror").innerHTML="* Enter both First or Last Name";
     return false;
@@ -158,13 +208,21 @@ alert("Registered Successfully!");
 <body>
 <form name="myForm" onsubmit="return checkvalid()" method="post" action="">
 <div>
-<h1>Sign Up !</h1>
-Name:<br><input class="inputbox" type="text" name="Name" placeholder="Enter Your Name" /><span id="namerror"></span><br><br>
-E-mail:<br><input class="inputbox" type="text" name="e-mail" placeholder="Enter Your E-mail" /><span id="mailerror"></span><br><br>
-State:<br><input class="inputbox" type="text" name="state" placeholder="Enter Your State Name" /><span id="stateerror"></span><br><br>
-Phone No. :<br> <input class="inputbox" type="text" name="phone" placeholder="Enter Your Phone No." /><span id="phoneerror"></span><br><br>
-Pin Code :<br> <input class="inputbox" type="text" name="zipcode" placeholder="Enter Your Pin" /><span id="ziperror"></span><br><br>
-Password :<br><input class="inputbox" type="password" name="passwd" placeholder="Choose Password" /><span id="pwderror"></span><br><br>
+<br>
+
+<h2><i class="fa fa-sign-in" ></i>  Sign Up Here !</h2>
+<label>Name:</label>
+<br><input id="nameinput" class="inputbox" type="text" name="Name" placeholder="Enter Your Name" /><span id="namerror"></span><br><br>
+<label>E-mail:</label>
+<br><input id="mailinput" class="inputbox" type="text" name="e-mail" placeholder="Enter Your E-mail" /><span id="mailerror"></span><br><br>
+<label>State:</label>
+<br><input id="stateinput" class="inputbox" type="text" name="state" placeholder="Enter Your State Name" /><span id="stateerror"></span><br><br>
+<label>Phone No.:</label>
+<br> <input id="phoneinput" class="inputbox" type="text" name="phone" placeholder="Enter Your Phone No." /><span id="phoneerror"></span><br><br>
+<label>Pin Code :</label>
+<br> <input id="zipinput" class="inputbox" type="text" name="zipcode" placeholder="Enter Your Pin" /><span id="ziperror"></span><br><br>
+<label>Password :</label>
+<br><input  id="pwdinput" class="inputbox" type="password" name="passwd" placeholder="Choose Password" /><span id="pwderror"></span><br><br>
 <input class="btn" type="submit" value="Submit"/>
 </div>
 </body>
